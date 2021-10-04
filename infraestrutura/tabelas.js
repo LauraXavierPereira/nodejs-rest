@@ -7,21 +7,13 @@ class Tabelas {
 
 	criarAtendimentos() {
 
-		const sql = ```CREATE TABLE IF NOT EXISTS tb_atendimento 
-		(
-			id int NOT NULL AUTOINCREMENT, 
-			client VARCHAR(50) NOT NULL, 
-			pet VARCHAR(20), 
-			servico VARCHAR(20) NOT NULL, 
-			status VARCHAR(20) NOT NULL,
-			observacoes text, 
-			PRIMARY KEY(id))```
+		const sql = 'CREATE TABLE IF NOT EXISTS Atendimentos (id int NOT NULL AUTO_INCREMENT, cliente varchar(50) NOT NULL, pet varchar(20), servico varchar(20) NOT NULL, data datetime NOT NULL, dataCriacao datetime NOT NULL, status varchar(20) NOT NULL, observacoes text, PRIMARY KEY(id))'
 
-		this.conexao.query(sql, (error) =>{
+		this.conexao.query(sql, error =>{
 			if (error) {
 				console.log(error)
 			} else {
-				console.log("TABELA ATENDIMENTOS CRIADA COM SUCESSO!")
+				console.log("TABELA ATENDIMENTOS VALIDADA COM SUCESSO!")
 			}
 
 		})

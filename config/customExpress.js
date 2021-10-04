@@ -1,6 +1,5 @@
 const express = require('express');
 const consign = require('consign'); // usado para utilizar as rotas
-
 const bodyParser = require('body-parser')
 
 

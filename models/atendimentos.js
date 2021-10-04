@@ -1,21 +1,24 @@
 //Conexoes com o banco de dados
-
+const moment = require('moment')
 const conexao = require('../infraestrutura/conexao')
-
 
 class Atendimento {
 
-	adiciona(atendimento) {
-		const sql = 'INSERT INTO tb_atendimentos SET ?'
+	adiciona(atendimento, res) {
+		const dataCriacao = moment().format('YYYY-MM-DD HH:MM:SS')
+		const data = moment(atendimento.data, 'DD/MM/YYYY').format('YYYY-MM-DD HH:MM:SS')
+		const atendimentoDatado = {...atendimento, dataCriacao, data} //Tudo de atendimento + Data
+		const sql = 'INSERT INTO atendimentos SET ?'
 
-		conexao.query(sql, atendimento, (error, results) => {
+		conexao.query(sql, atendimentoDatado, (error, results) => {
 			if (error){
-				console.log(error)
+				res.json(error)
 			} else {
 				console.log("SUCCESS")
-				console.log(results)
+				res.json(results)
 			}
 		})
 
 	}
 }
+module.exports = new Atendimento
