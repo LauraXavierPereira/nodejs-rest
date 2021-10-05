@@ -12,10 +12,10 @@ class Atendimento {
 
 		conexao.query(sql, atendimentoDatado, (error, results) => {
 			if (error){
-				res.json(error)
+				res.status(400).json(error)
 			} else {
 				console.log("SUCCESS")
-				res.json(results)
+				res.status(201).json(results)
 			}
 		})
 
